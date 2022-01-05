@@ -20,3 +20,11 @@ it("find by role", async () => {
   const linkElement = await screen.findByRole("heading");
   expect(linkElement).toBeInTheDocument();
 });
+
+// query by with not (is async)
+
+it("insure that the element is not in document", () => {
+  render(<Header title={"Hello"} />);
+  const linkElement = screen.queryByText(/regt/i);
+  expect(linkElement).not.toBeInTheDocument();
+});

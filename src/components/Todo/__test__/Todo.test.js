@@ -54,4 +54,19 @@ describe("Integration Testing", () => {
 
     expect(divElem).toHaveClass("todo-item-active");
   });
+
+  it("testing the footer", () => {
+    render(<Mockfun />);
+    addTodo(["Hello world!", "Hey what's up", "Yeap"]);
+
+    const divElems = screen.getAllByTestId("todos");
+
+    const footer = screen.getByTestId("para");
+
+    // clicking the 1st item
+    fireEvent.click(divElems[0]);
+
+    //expect(divElem).toHaveClass("todo-item-active");
+    expect(footer.textContent).toBe("2 tasks left");
+  });
 });
